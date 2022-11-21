@@ -1,6 +1,7 @@
-import React, { useEffect, FC } from 'react';
+import React, { useEffect, useState, FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { useQuery } from 'react-query';
+import { useGetEncounterByNameQuery } from '../rtkapi';
+
 
 /* 
 Encounter window governs the boss, fight timeline, and abilities
@@ -28,23 +29,21 @@ Information needed from encounter:
 
 
 const EncounterWindow: FC = () => {
-  const encounter = useAppSelector(state => state.encounter.encounterName)
-  const { isLoading, error, data } = useQuery({
-    queryKey: ['encounterData', encounter],
-    queryFn: () =>
-      fetch(`/api/loadencounter?encounter=${encounter}`).then(res => 
-        res.json()
-      ),
-    enabled: !!encounter
-  })
+  const encounter = useAppSelector(state => state.encounter.encounterName || '')
+  const [skip, setSkip] = useState(true);
+  const { data, error, isLoading, isUninitialized } = useGetEncounterByNameQuery(encounter, { skip });
+
+  useEffect(() => {
+    setSkip(encounter.length ? false : true);
+  }, [encounter])
 
   return (
     <div>
       Encounter Window
-      <p>{encounter ? encounter : 'no encounter selected'}</p>
-      {!!isLoading && <span>Loading encounter...</span>}
-      {!!error && <span>Failed to load data</span>}
-      {!!data && <div>Data goes here for {data.bossName}</div>}
+      { isUninitialized && <p>No encounter selected</p>}
+      { !!error && <p>There was an error loading data</p> }
+      { isLoading && <p>Loading encounter data...</p> }
+      { !!data && <p>Showing data for {data.bossName}</p> }
     </div>
   )
 }

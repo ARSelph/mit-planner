@@ -1,11 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import encounterReducer from './reducers';
+import { setupListeners } from '@reduxjs/toolkit/query/react'
+import { encounterApi } from './rtkapi';
 
 export const store = configureStore({
   reducer: {
-    encounter: encounterReducer
-  }
+    encounter: encounterReducer,
+    [encounterApi.reducerPath]: encounterApi.reducer
+  },
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware().concat(encounterApi.middleware),
 })
+
+setupListeners(store.dispatch)
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

@@ -9,6 +9,7 @@ type Controllers = {
 const controllers: Controllers = {
   loadEncounter: async (req, res, next) => {
     const { encounter } = req.query;
+    console.log('loading encounter', encounter)
     if (typeof encounter === 'string' && encounters[encounter]) {
       res.locals.data = encounters[encounter];
       return next();
