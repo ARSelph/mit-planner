@@ -1,7 +1,7 @@
 import React, { useEffect, useState, FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { addPlayer, deletePlayer } from '../reducers';
-import { useGetEncounterByNameQuery } from '../rtkapi';
+import { useGetAllJobsQuery, useGetEncounterByNameQuery, useGetJobByNameQuery } from '../rtkapi';
 import EncounterDisplay from './EncounterDisplay';
 import PlayerDisplay from './PlayerDisplay';
 import { Player } from '../../types';
@@ -14,6 +14,7 @@ const EncounterWindow: FC = () => {
   const [skip, setSkip] = useState(true);
   const [selectedJob, setSelectedJob] = useState('');
   const { data, error, isLoading, isUninitialized } = useGetEncounterByNameQuery(encounter, { skip });
+  const jobs = useGetAllJobsQuery().data;
 
   useEffect(() => {
     setSkip(encounter ? false : true);
@@ -33,6 +34,16 @@ const EncounterWindow: FC = () => {
       </span>
     )
   })
+
+  const jobOptions: JSX.Element[] = [];
+
+  if (jobs) {
+    for (const job in jobs) {
+      jobOptions.push(
+        <option value={job}>{jobs[job].fullName}</option>
+      )
+    }
+  }
 
   const handleAddPlayer = (event: any) => {
     if (selectedJob.length) dispatch(addPlayer(selectedJob));
@@ -56,11 +67,7 @@ const EncounterWindow: FC = () => {
         <label>
           Add new player:
           <select value={selectedJob} onChange={handleChange}>
-            <option value={'whm'}>White Mage</option>
-            <option value={'sch'}>Scholar</option>
-            <option value={'ast'}>Astrologian</option>
-            <option value={'sge'}>Sage</option>
-            <option value={'war'}>Warrior</option>
+            {jobOptions}
           </select>
         </label>
         <input type='submit' value='Add' />
