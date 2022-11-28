@@ -1,11 +1,12 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import encounterReducer from './reducers';
+import { encounterReducer, playerReducer } from './reducers';
 import { setupListeners } from '@reduxjs/toolkit/query/react'
 import { encounterApi } from './rtkapi';
 
 export const store = configureStore({
   reducer: {
     encounter: encounterReducer,
+    player: playerReducer,
     [encounterApi.reducerPath]: encounterApi.reducer
   },
   middleware: (getDefaultMiddleware) => 

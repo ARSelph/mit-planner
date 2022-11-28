@@ -21,3 +21,7 @@ export type EncounterData = {
 export type Encounters = {
   [key: string]: EncounterData
 }
+
+export type Player = {
+  job: string
+}

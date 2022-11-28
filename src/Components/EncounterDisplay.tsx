@@ -43,6 +43,7 @@ const EncounterDisplay: FC<{data: EncounterData}> = props => {
 
   return (
     <div className='encounter-boss-timeline'>
+      <h3>{data.bossName}</h3>
       {/* <p>Displaying data for {data.bossName}</p> */}
       <>{abilityDisplays}</>
     </div>
