@@ -7,4 +7,12 @@ router.get('/loadencounter', controllers.loadEncounter, (req: Request, res: Resp
   return res.status(200).send(res.locals.data);
 })
 
+router.get('/job', controllers.getJob, (req: Request, res: Response) => {
+  return res.status(200).send(res.locals.data);
+})
+
+// router.get('/jobnames', controllers.getJobNames, (req: Request, res: Response) => {
+//   return res.status(200).send(res.locals.data)
+// })
+
 export default router;

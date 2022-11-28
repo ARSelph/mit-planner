@@ -25,3 +25,13 @@ export type Encounters = {
 export type Player = {
   job: string
 }
+
+export type Job = {
+  name: string,
+  fullName: string,
+  iconPath: string,
+  role: 'tank' | 'healer' | 'melee' | 'ranged' | 'caster',
+  abilities: {
+    name: string,
+  }[]
+}

@@ -1,16 +1,17 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { encounterReducer, playerReducer } from './reducers';
 import { setupListeners } from '@reduxjs/toolkit/query/react'
-import { encounterApi } from './rtkapi';
+import { encounterApi, jobApi } from './rtkapi';
 
 export const store = configureStore({
   reducer: {
     encounter: encounterReducer,
     player: playerReducer,
-    [encounterApi.reducerPath]: encounterApi.reducer
+    [encounterApi.reducerPath]: encounterApi.reducer,
+    [jobApi.reducerPath]: jobApi.reducer
   },
   middleware: (getDefaultMiddleware) => 
-    getDefaultMiddleware().concat(encounterApi.middleware),
+    getDefaultMiddleware().concat(encounterApi.middleware).concat(jobApi.middleware),
 })
 
 setupListeners(store.dispatch)

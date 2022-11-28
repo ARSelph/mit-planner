@@ -19,10 +19,19 @@ const EncounterWindow: FC = () => {
     setSkip(encounter ? false : true);
   }, [encounter])
 
+  const handleDelete = (index: number): void => {
+    dispatch(deletePlayer(index));
+  }
+
   const playerDisplays: JSX.Element[] = [];
 
-  players.forEach(player => {
-    playerDisplays.push(<PlayerDisplay player={player}/>)
+  players.forEach((player, index) => {
+    playerDisplays.push(
+      <span>
+        <PlayerDisplay player={player}/>
+        <button onClick={()=>handleDelete(index)}>Delete</button>
+      </span>
+    )
   })
 
   const handleAddPlayer = (event: any) => {
