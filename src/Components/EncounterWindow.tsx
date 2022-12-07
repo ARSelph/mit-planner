@@ -58,10 +58,9 @@ const EncounterWindow: FC = () => {
     <div>
       Encounter Window
       { isUninitialized && <p>No encounter selected</p>}
-      { !!error && <p>There was an error loading data</p> }
+      { error && <p>There was an error loading data</p> }
       { isLoading && <p>Loading encounter data...</p> }
-      {/* { !!data && <h3>{data.bossName}</h3>} */}
-      { !!data && <EncounterDisplay data={data}/> }
+      { data && <EncounterDisplay data={data}/> }
       {playerDisplays}
       <form onSubmit={handleAddPlayer}>
         <label>
