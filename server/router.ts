@@ -3,7 +3,7 @@ import controllers from './controllers';
 
 const router = express.Router();
 
-router.get('/loadencounter', controllers.loadEncounter, (req: Request, res: Response) => {
+router.get('/encounter', controllers.getEncounter, (req: Request, res: Response) => {
   return res.status(200).send(res.locals.data);
 })
 
@@ -11,7 +11,7 @@ router.get('/job', controllers.getJob, (req: Request, res: Response) => {
   return res.status(200).send(res.locals.data);
 })
 
-// router.get('/jobnames', controllers.getJobNames, (req: Request, res: Response) => {
+// router.get('/alljobs', controllers.getJobPaths, (req: Request, res: Response) => {
 //   return res.status(200).send(res.locals.data)
 // })
 

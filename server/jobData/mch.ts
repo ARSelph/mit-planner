@@ -4,7 +4,7 @@ import mchAbilities from "../abilityData/mch";
 const mch: Job = {
   name: 'mch',
   fullName: 'Machinist',
-  iconPath: '',
+  iconPath: '03_DPS/Job/Machinist.png',
   role: 'ranged',
   abilities: mchAbilities
 }

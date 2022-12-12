@@ -4,7 +4,7 @@ import dncAbilities from "../abilityData/dnc";
 const dnc: Job = {
   name: 'dnc',
   fullName: 'Dancer',
-  iconPath: '',
+  iconPath: '03_DPS/Job/Dancer.png',
   role: 'ranged',
   abilities: dncAbilities
 }

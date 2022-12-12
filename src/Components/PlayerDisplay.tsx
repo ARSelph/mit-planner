@@ -6,10 +6,11 @@ const PlayerDisplay: FC<{player: Player}> = props => {
   const { player } = props;
   const { data, error, isLoading, isUninitialized } = useGetJobByNameQuery(player.job);
   
+  
   return (
     <div>
-      {!!data && <h5>{data.fullName}</h5>}
-      
+      {data && <img src={`/public/jobIcons/${data.iconPath}`}/>}
+      {data && <h5>{data.fullName}</h5>}
     </div>
   )
 }

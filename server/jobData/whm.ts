@@ -4,7 +4,7 @@ import whmAbilities from "../abilityData/whm";
 const whm: Job = {
   name: 'whm',
   fullName: 'White Mage',
-  iconPath: '',
+  iconPath: '02_HEALER/Job/WhiteMage.png',
   role: 'healer',
   abilities: whmAbilities
 }

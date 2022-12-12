@@ -4,7 +4,7 @@ import rdmAbilities from "../abilityData/rdm";
 const rdm: Job = {
   name: 'rdm',
   fullName: 'Red Mage',
-  iconPath: '',
+  iconPath: '03_DPS/Job/RedMage.png',
   role: 'caster',
   abilities: rdmAbilities
 }

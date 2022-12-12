@@ -3,7 +3,7 @@ import { EncounterData, Job } from '../types'
 
 export const encounterApi = createApi({
   reducerPath: 'encounterApi',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api/loadencounter' }),
+  baseQuery: fetchBaseQuery({ baseUrl: '/api/encounter' }),
   endpoints: (builder) => ({
     getEncounterByName: builder.query<EncounterData, string>({
       query: (name) => `?encounter=${name}`,
@@ -18,7 +18,7 @@ export const jobApi = createApi({
     getJobByName: builder.query<Job, string>({
       query: (name) => `?job=${name}`
     }),
-    getAllJobs: builder.query<{[key:string]: Job}, void>({
+    getAllJobs: builder.query<{[key:string]: {fullName: string, iconPath: string}}, void>({
       query: () => ''
     })
   })

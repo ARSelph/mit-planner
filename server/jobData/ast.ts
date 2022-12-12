@@ -4,7 +4,7 @@ import astAbilities from "../abilityData/ast";
 const ast: Job = {
   name: 'ast',
   fullName: 'Astrologian',
-  iconPath: '',
+  iconPath: '02_HEALER/Job/Astrologian.png',
   role: 'healer',
   abilities: astAbilities
 }

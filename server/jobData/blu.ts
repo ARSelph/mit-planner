@@ -4,7 +4,7 @@ import bluAbilities from "../abilityData/blu";
 const blu: Job = {
   name: 'blu',
   fullName: 'Blue Mage',
-  iconPath: '',
+  iconPath: '06_LIMITED/BlueMage.png',
   role: 'caster',
   abilities: bluAbilities
 }

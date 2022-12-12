@@ -4,7 +4,7 @@ import drgAbilities from "../abilityData/drg";
 const drg: Job = {
   name: 'drg',
   fullName: 'Dragoon',
-  iconPath: '',
+  iconPath: '03_DPS/Job/Dragoon.png',
   role: 'melee',
   abilities: drgAbilities
 }

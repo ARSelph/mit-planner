@@ -4,7 +4,7 @@ import schAbilities from "../abilityData/sch";
 const sch: Job = {
   name: 'sch',
   fullName: 'Scholar',
-  iconPath: '',
+  iconPath: '02_HEALER/Job/Scholar.png',
   role: 'healer',
   abilities: schAbilities
 }

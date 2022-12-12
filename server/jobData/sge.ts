@@ -4,7 +4,7 @@ import sgeAbilities from "../abilityData/sge";
 const sge: Job = {
   name: 'sge',
   fullName: 'Sage',
-  iconPath: '',
+  iconPath: '02_HEALER/Job/Sage.png',
   role: 'healer',
   abilities: sgeAbilities
 }
