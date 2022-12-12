@@ -1,12 +1,13 @@
 import { Ability } from "../../types"
 import healerAbilities from "./healer";
+const basePath = '/18_AST/'
 
 const astAbilities: {[key: string]: Ability} = {
-  ...healerAbilities,
   'Benefic': {
     name: 'Benefic',
+    level: 2,
     type: 'spell',
-    iconPath: '',
+    iconPath: 'benefic.png',
     recast: 2.5,
     charges: 1,
     range: 30,
@@ -27,8 +28,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Helios': {
     name: 'Helios',
+    level: 10,
     type: 'spell',
-    iconPath: '',
+    iconPath: 'helios.png',
     recast: 2.5,
     charges: 1,
     range: null,
@@ -47,8 +49,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Essential Dignity': {
     name: 'Essential Dignity',
+    level: 15,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'essential_dignity.png',
     recast: 40,
     charges: 2,
     range: 30,
@@ -69,8 +72,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Benefic II': {
     name: 'Benefic II',
+    level: 26,
     type: 'spell',
-    iconPath: '',
+    iconPath: 'benefic_II.png',
     recast: 2.5,
     charges: 1,
     range: 30,
@@ -89,8 +93,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Aspected Benefic': {
     name: 'Aspected Benefic',
+    level: 34,
     type: 'spell',
-    iconPath: '',
+    iconPath: 'aspected_benefic.png',
     recast: 2.5,
     charges: 1,
     range: 30,
@@ -116,8 +121,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Aspected Helios': {
     name: 'Aspected Helios',
+    level: 42,
     type: 'spell',
-    iconPath: '',
+    iconPath: 'aspected_helios.png',
     recast: 2.5,
     charges: 1,
     range: null,
@@ -143,8 +149,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Synastry': {
     name: 'Synastry',
+    level: 50,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'synastry.png',
     recast: 120,
     charges: 1,
     range: 30,
@@ -164,8 +171,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Collective Unconscious': {
     name: 'Collective Unconscious',
+    level: 58,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'collective_unconscious.png',
     recast: 60,
     charges: 1,
     range: null,
@@ -196,8 +204,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Celestial Opposition': {
     name: 'Celestial Opposition',
+    level: 60,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'celestial_opposition.png',
     recast: 60,
     charges: 1,
     range: null,
@@ -223,8 +232,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Stellar Detonation': {
     name: 'Stellar Detonation',
+    level: 62,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'stellar_detonation.png',
     recast: 60,
     charges: 1,
     range: 30,
@@ -249,8 +259,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Celestial Intersection': {
     name: 'Celestial Intersection',
+    level: 74,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'celestial_intersection.png',
     recast: 30,
     charges: 2,
     range: 30,
@@ -276,8 +287,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Horoscope': {
     name: 'Horoscope',
+    level: 76,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'horoscope_1.png',
     recast: 60,
     charges: 1,
     range: null,
@@ -301,8 +313,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Horoscope Helios': {
     name: 'Horoscope Helios',
+    level: 76,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'horoscope_2.png',
     recast: 60,
     charges: 1,
     range: null,
@@ -326,8 +339,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Neutral Sect': {
     name: 'Neutral Sect',
+    level: 80,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'neutral_sect.png',
     recast: 120,
     charges: 1,
     range: null,
@@ -355,8 +369,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Neutral Aspected Benefic': {
     name: 'Neutral Aspected Benefic',
+    level: 80,
     type: 'spell',
-    iconPath: '',
+    iconPath: 'aspected_benefic.png',
     recast: 2.5,
     charges: 1,
     range: 30,
@@ -388,8 +403,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Neutral Aspected Helios': {
     name: 'Neutral Aspected Helios',
+    level: 80,
     type: 'spell',
-    iconPath: '',
+    iconPath: 'aspected_helios.png',
     recast: 2.5,
     charges: 1,
     range: null,
@@ -421,8 +437,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Exaltation': {
     name: 'Exaltation',
+    level: 86,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'exaltation.png',
     recast: 60,
     charges: 1,
     range: 30,
@@ -447,8 +464,9 @@ const astAbilities: {[key: string]: Ability} = {
   },
   'Microcosmos': {
     name: 'Microcosmos',
+    level: 90,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'microcosmos_02.png',
     recast: 180,
     charges: 1,
     range: null,
@@ -469,5 +487,11 @@ const astAbilities: {[key: string]: Ability} = {
     ]
   },
 };
+
+for (const ability in astAbilities) {
+  astAbilities[ability].iconPath = basePath + astAbilities[ability].iconPath;
+}
+
+Object.assign(astAbilities, healerAbilities);
 
 export default astAbilities;

@@ -1,10 +1,11 @@
 import { Ability } from "../../types"
 import rangedAbilities from "./ranged";
+const basePath = '/12_DNC/'
 
 const dncAbilities: {[key: string]: Ability} = {
-  ...rangedAbilities,
   'Shield Samba': {
     name: 'Shield Samba',
+    level: 56,
     type: 'ability',
     iconPath: '',
     recast: 90,
@@ -36,5 +37,11 @@ const dncAbilities: {[key: string]: Ability} = {
     ]
   }
 };
+
+for (const ability in dncAbilities) {
+  dncAbilities[ability].iconPath = basePath + dncAbilities[ability].iconPath;
+}
+
+Object.assign(dncAbilities, rangedAbilities);
 
 export default dncAbilities;

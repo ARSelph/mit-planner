@@ -1,10 +1,11 @@
 import { Ability } from "../../types"
 import rangedAbilities from "./ranged";
+const basePath = '/10_BRD/'
 
 const brdAbilities: {[key: string]: Ability} = {
-  ...rangedAbilities,
   'Troubador': {
     name: 'Troubador',
+    level: 62,
     type: 'ability',
     iconPath: '',
     recast: 90,
@@ -36,5 +37,11 @@ const brdAbilities: {[key: string]: Ability} = {
     ]
   }
 };
+
+for (const ability in brdAbilities) {
+  brdAbilities[ability].iconPath = basePath + brdAbilities[ability].iconPath;
+}
+
+Object.assign(brdAbilities, rangedAbilities);
 
 export default brdAbilities;

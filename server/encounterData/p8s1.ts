@@ -3,6 +3,7 @@ import { EncounterData } from "../../types";
 const p8s1: EncounterData = {
   encounterName: 'Abyssos: The Eighth Circle (Savage) - Part 1',
   bossName: 'Hephaistos',
+  level: 90,
   duration: 473,
   variations: 2,
   abilities: [

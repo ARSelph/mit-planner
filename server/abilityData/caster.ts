@@ -1,8 +1,10 @@
 import { Ability } from "../../types"
+const basePath = '/13_BLM/MagicalRangedRollActions/'
 
 const casterAbilities: {[key: string]: Ability} = {
   'Addle': {
     name: 'Addle',
+    level: 8,
     type: 'ability',
     iconPath: '',
     recast: 90,

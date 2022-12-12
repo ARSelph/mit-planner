@@ -9,6 +9,7 @@ export type ErrObject = {
 export type EncounterData = {
   encounterName: string,
   bossName: string,
+  level: number,
   duration: number,
   variations: number,
   abilities: {
@@ -40,6 +41,7 @@ export type Job = {
 
 export type Ability = {
   name: string,
+  level: number,
   type: 'ability' | 'spell' | 'weaponskill',
   iconPath: string,
   recast: number,
