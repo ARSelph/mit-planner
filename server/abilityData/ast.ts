@@ -1,9 +1,9 @@
 import { Ability } from "../../types"
 import healerAbilities from "./healer";
 
-const astAbilities: Ability[] = [
+const astAbilities: {[key: string]: Ability} = {
   ...healerAbilities,
-  {
+  'Benefic': {
     name: 'Benefic',
     type: 'spell',
     recast: 2.5,
@@ -24,7 +24,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Helios': {
     name: 'Helios',
     type: 'spell',
     recast: 2.5,
@@ -43,7 +43,7 @@ const astAbilities: Ability[] = [
       }
     ],
   },
-  {
+  'Essential Dignity': {
     name: 'Essential Dignity',
     type: 'ability',
     recast: 40,
@@ -64,7 +64,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Benefic II': {
     name: 'Benefic II',
     type: 'spell',
     recast: 2.5,
@@ -83,7 +83,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Aspected Benefic': {
     name: 'Aspected Benefic',
     type: 'spell',
     recast: 2.5,
@@ -109,7 +109,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Aspected Helios': {
     name: 'Aspected Helios',
     type: 'spell',
     recast: 2.5,
@@ -135,7 +135,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Synastry': {
     name: 'Synastry',
     type: 'ability',
     recast: 120,
@@ -155,7 +155,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Collective Unconscious': {
     name: 'Collective Unconscious',
     type: 'ability',
     recast: 60,
@@ -186,7 +186,7 @@ const astAbilities: Ability[] = [
       },
     ]
   },
-  {
+  'Celestial Opposition': {
     name: 'Celestial Opposition',
     type: 'ability',
     recast: 60,
@@ -212,7 +212,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Stellar Detonation': {
     name: 'Stellar Detonation',
     type: 'ability',
     recast: 60,
@@ -237,7 +237,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Celestial Intersection': {
     name: 'Celestial Intersection',
     type: 'ability',
     recast: 30,
@@ -263,7 +263,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Horoscope': {
     name: 'Horoscope',
     type: 'ability',
     recast: 60,
@@ -287,7 +287,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Horoscope Helios': {
     name: 'Horoscope Helios',
     type: 'ability',
     recast: 60,
@@ -311,7 +311,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Neutral Sect': {
     name: 'Neutral Sect',
     type: 'ability',
     recast: 120,
@@ -339,7 +339,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Neutral Aspected Benefic': {
     name: 'Neutral Aspected Benefic',
     type: 'spell',
     recast: 2.5,
@@ -371,7 +371,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Neutral Aspected Helios': {
     name: 'Neutral Aspected Helios',
     type: 'spell',
     recast: 2.5,
@@ -403,7 +403,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Exaltation': {
     name: 'Exaltation',
     type: 'ability',
     recast: 60,
@@ -428,7 +428,7 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-  {
+  'Microcosmos': {
     name: 'Microcosmos',
     type: 'ability',
     recast: 180,
@@ -450,6 +450,6 @@ const astAbilities: Ability[] = [
       }
     ]
   },
-];
+};
 
 export default astAbilities;

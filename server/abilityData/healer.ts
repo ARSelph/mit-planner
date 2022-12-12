@@ -1,7 +1,7 @@
 import { Ability } from "../../types"
 
-const healerAbilities: Ability[] = [
-
-];
+const healerAbilities: {[key: string]: Ability} = {
+  
+};
 
 export default healerAbilities;

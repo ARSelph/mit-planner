@@ -1,7 +1,7 @@
 import { Ability } from "../../types"
 
-const tankAbilities: Ability[] = [
+const tankAbilities: {[key: string]: Ability} = {
 
-];
+};
 
 export default tankAbilities;

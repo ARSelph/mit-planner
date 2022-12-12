@@ -1,3 +1,5 @@
+import { JobString } from "./server/jobData/allJobs";
+
 export type ErrObject = {
   log: string,
   status: number, 
@@ -31,7 +33,9 @@ export type Job = {
   fullName: string,
   iconPath: string,
   role: 'tank' | 'healer' | 'melee' | 'ranged' | 'caster',
-  abilities: Ability[]
+  abilities: {
+    [key: string]: Ability
+  }
 }
 
 export type Ability = {
@@ -98,5 +102,9 @@ export type Ability = {
     compiledDamageHeal?: {
       amount: number
     }
+    exclusiveWith?: {
+      job: JobString,
+      ability: string
+    }[]
   }[]
 }

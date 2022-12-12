@@ -1,7 +1,7 @@
 import { Ability } from "../../types"
 
-const rangedAbilities: Ability[] = [
+const rangedAbilities: {[key: string]: Ability} = {
 
-];
+};
 
 export default rangedAbilities;
