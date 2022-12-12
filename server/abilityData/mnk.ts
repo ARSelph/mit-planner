@@ -1,9 +1,9 @@
 import { Ability } from "../../types"
 import meleeAbilities from "./melee";
 
-const mnkAbilities: Ability[] = [
+const mnkAbilities: {[key: string]: Ability} = {
   ...meleeAbilities,
   
-];
+};
 
 export default mnkAbilities;

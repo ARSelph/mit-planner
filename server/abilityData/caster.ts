@@ -4,6 +4,7 @@ const casterAbilities: {[key: string]: Ability} = {
   'Addle': {
     name: 'Addle',
     type: 'ability',
+    iconPath: '',
     recast: 90,
     charges: 1,
     range: 25,

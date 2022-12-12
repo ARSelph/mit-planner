@@ -6,6 +6,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Benefic': {
     name: 'Benefic',
     type: 'spell',
+    iconPath: '',
     recast: 2.5,
     charges: 1,
     range: 30,
@@ -27,6 +28,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Helios': {
     name: 'Helios',
     type: 'spell',
+    iconPath: '',
     recast: 2.5,
     charges: 1,
     range: null,
@@ -46,6 +48,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Essential Dignity': {
     name: 'Essential Dignity',
     type: 'ability',
+    iconPath: '',
     recast: 40,
     charges: 2,
     range: 30,
@@ -67,6 +70,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Benefic II': {
     name: 'Benefic II',
     type: 'spell',
+    iconPath: '',
     recast: 2.5,
     charges: 1,
     range: 30,
@@ -86,6 +90,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Aspected Benefic': {
     name: 'Aspected Benefic',
     type: 'spell',
+    iconPath: '',
     recast: 2.5,
     charges: 1,
     range: 30,
@@ -112,6 +117,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Aspected Helios': {
     name: 'Aspected Helios',
     type: 'spell',
+    iconPath: '',
     recast: 2.5,
     charges: 1,
     range: null,
@@ -138,6 +144,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Synastry': {
     name: 'Synastry',
     type: 'ability',
+    iconPath: '',
     recast: 120,
     charges: 1,
     range: 30,
@@ -158,6 +165,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Collective Unconscious': {
     name: 'Collective Unconscious',
     type: 'ability',
+    iconPath: '',
     recast: 60,
     charges: 1,
     range: null,
@@ -189,6 +197,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Celestial Opposition': {
     name: 'Celestial Opposition',
     type: 'ability',
+    iconPath: '',
     recast: 60,
     charges: 1,
     range: null,
@@ -215,6 +224,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Stellar Detonation': {
     name: 'Stellar Detonation',
     type: 'ability',
+    iconPath: '',
     recast: 60,
     charges: 1,
     range: 30,
@@ -240,6 +250,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Celestial Intersection': {
     name: 'Celestial Intersection',
     type: 'ability',
+    iconPath: '',
     recast: 30,
     charges: 2,
     range: 30,
@@ -266,6 +277,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Horoscope': {
     name: 'Horoscope',
     type: 'ability',
+    iconPath: '',
     recast: 60,
     charges: 1,
     range: null,
@@ -290,6 +302,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Horoscope Helios': {
     name: 'Horoscope Helios',
     type: 'ability',
+    iconPath: '',
     recast: 60,
     charges: 1,
     range: null,
@@ -314,6 +327,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Neutral Sect': {
     name: 'Neutral Sect',
     type: 'ability',
+    iconPath: '',
     recast: 120,
     charges: 1,
     range: null,
@@ -342,6 +356,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Neutral Aspected Benefic': {
     name: 'Neutral Aspected Benefic',
     type: 'spell',
+    iconPath: '',
     recast: 2.5,
     charges: 1,
     range: 30,
@@ -374,6 +389,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Neutral Aspected Helios': {
     name: 'Neutral Aspected Helios',
     type: 'spell',
+    iconPath: '',
     recast: 2.5,
     charges: 1,
     range: null,
@@ -406,6 +422,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Exaltation': {
     name: 'Exaltation',
     type: 'ability',
+    iconPath: '',
     recast: 60,
     charges: 1,
     range: 30,
@@ -431,6 +448,7 @@ const astAbilities: {[key: string]: Ability} = {
   'Microcosmos': {
     name: 'Microcosmos',
     type: 'ability',
+    iconPath: '',
     recast: 180,
     charges: 1,
     range: null,

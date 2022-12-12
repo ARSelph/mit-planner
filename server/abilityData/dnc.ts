@@ -6,6 +6,7 @@ const dncAbilities: {[key: string]: Ability} = {
   'Shield Samba': {
     name: 'Shield Samba',
     type: 'ability',
+    iconPath: '',
     recast: 90,
     range: null,
     radius: 20,

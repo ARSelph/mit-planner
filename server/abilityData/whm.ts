@@ -1,9 +1,9 @@
 import { Ability } from "../../types"
 import healerAbilities from "./healer";
 
-const whmAbilities: Ability[] = [
+const whmAbilities: {[key: string]: Ability} = {
   ...healerAbilities,
   
-];
+};
 
 export default whmAbilities;

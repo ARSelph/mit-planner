@@ -6,6 +6,7 @@ const brdAbilities: {[key: string]: Ability} = {
   'Troubador': {
     name: 'Troubador',
     type: 'ability',
+    iconPath: '',
     recast: 90,
     charges: 1,
     range: null,

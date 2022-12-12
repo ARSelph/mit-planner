@@ -41,6 +41,7 @@ export type Job = {
 export type Ability = {
   name: string,
   type: 'ability' | 'spell' | 'weaponskill',
+  iconPath: string,
   recast: number,
   charges: number,
   range: number | null,

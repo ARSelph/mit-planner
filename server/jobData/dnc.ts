@@ -1,11 +1,12 @@
 import { Job } from "../../types";
+import dncAbilities from "../abilityData/dnc";
 
 const dnc: Job = {
   name: 'dnc',
   fullName: 'Dancer',
   iconPath: '',
   role: 'ranged',
-  abilities: []
+  abilities: dncAbilities
 }
 
 export default dnc;

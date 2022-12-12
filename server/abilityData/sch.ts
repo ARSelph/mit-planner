@@ -1,9 +1,9 @@
 import { Ability } from "../../types"
 import healerAbilities from "./healer";
 
-const schAbilities: Ability[] = [
+const schAbilities: {[key: string]: Ability} = {
   ...healerAbilities,
   
-];
+};
 
 export default schAbilities;
