@@ -15,6 +15,7 @@ export type EncounterData = {
   abilities: {
     name: string,
     type: 'raidwide' | 'tankbuster' | 'other',
+    damageType: 'physical' | 'magical' | 'special'
     description: string,
     time: number,
     appearsInVariation: number[],
@@ -49,10 +50,15 @@ export type Ability = {
   range: number | null,
   radius: number | null,
   description: string,
-  requires?: string[],
+  requiresBuff?: string[], // applies if a buff is needed to use an ability
+  replaces?: string,
   effects: {
     target: 'self' | 'single' | 'aoe',
     includesSelf: boolean,
+    prerequisites?: { // applies if a buff is needed to activate an ability effect
+      buffs: string[],
+      allAnyOrNone: 'all' | 'any' | 'none' // all means all buffs need to be present, any means any of the buffs will activate the effect, and none means that the effect will only activate with none of the buffs present
+    }
     healing?: {
       potency: number
     },
@@ -61,7 +67,8 @@ export type Ability = {
       duration: number
     },
     barrier?: {
-      potency: number,
+      potency?: number,
+      maxHpFraction?: number,
       duration: number
     },
     damageReduction?: {
@@ -84,11 +91,18 @@ export type Ability = {
       amount: number,
       duration: number
     },
+    convertsDamage?: {
+      duration: number
+    }
     healingMagicPotencyIncrease?: {
       amount: number,
       duration: number
     }
     block?: {
+      duration: number
+    },
+    parry?: {
+      amount: number,
       duration: number
     },
     invulnerability?: {
@@ -97,6 +111,16 @@ export type Ability = {
     synastry?: {
       amount: number,
       duration: number
+    },
+    excog?: { // restores hp by potency when hp falls below 50%
+      potency: number,
+      duration: number
+    },
+    cover?: { // take damage for another party member
+      duration: number
+    },
+    selfHealForOtherTarget?: { // handles PLD's clemency self-heal
+      fraction: number
     }
     grantsBuff?: {
       name: string,
@@ -108,6 +132,6 @@ export type Ability = {
     exclusiveWith?: {
       job: JobString,
       ability: string
-    }[]
+    }[],
   }[]
 }

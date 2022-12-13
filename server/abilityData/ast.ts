@@ -383,6 +383,7 @@ const astAbilities: {[key: string]: Ability} = {
     Duration: 15s
     Aspected Benefic Effect: Nullifies damage equaling 250% of the amount of HP restored
     Duration: 30s`,
+    requiresBuff: ['Neutral Sect'],
     effects: [
       {
         target: 'single',
@@ -417,6 +418,7 @@ const astAbilities: {[key: string]: Ability} = {
     Duration: 15s
     Aspected Helios Effect: Nullifies damage equaling 125% of the amount of HP restored
     Duration: 30s`,
+    requiresBuff: ['Neutral Sect'],
     effects: [
       {
         target: 'aoe',
