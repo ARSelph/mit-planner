@@ -26,7 +26,10 @@ export const playerSlice = createSlice({
   reducers: {
     addPlayer: (state: playerStateType, action: PayloadAction<string>) => {
       if (state.players.length < 8) {
-        state.players.push({job: action.payload});
+        state.players.push({
+          job: action.payload,
+          abilityUses: []
+        });
       }
     },
     deletePlayer: (state: playerStateType, action: PayloadAction<number>) => {

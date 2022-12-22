@@ -6,20 +6,22 @@ export type ErrObject = {
   message: {err: string}
 }
 
+export type BossAbility = {
+  name: string,
+  type: 'raidwide' | 'tankbuster' | 'other',
+  damageType: 'physical' | 'magical' | 'special'
+  description: string,
+  time: number,
+  appearsInVariation: number[],
+};
+
 export type EncounterData = {
   encounterName: string,
   bossName: string,
   level: number,
   duration: number,
   variations: number,
-  abilities: {
-    name: string,
-    type: 'raidwide' | 'tankbuster' | 'other',
-    damageType: 'physical' | 'magical' | 'special'
-    description: string,
-    time: number,
-    appearsInVariation: number[],
-  }[]
+  abilities: BossAbility[]
 };
 
 export type Encounters = {
@@ -27,7 +29,14 @@ export type Encounters = {
 }
 
 export type Player = {
-  job: string
+  job: string,
+  abilityUses: AbilityUse[]
+}
+
+export type AbilityUse = {
+  ability: Ability,
+  time: number,
+  target: Player | null
 }
 
 export type Job = {

@@ -38,6 +38,9 @@ const EncounterWindow: FC = () => {
   const jobOptions: JSX.Element[] = [];
 
   if (jobs) {
+    jobOptions.push(
+      <option value={''}></option>
+    )
     for (const job in jobs) {
       jobOptions.push(
         <option value={job}>{jobs[job].fullName}</option>
@@ -61,7 +64,7 @@ const EncounterWindow: FC = () => {
       { error && <p>There was an error loading data</p> }
       { isLoading && <p>Loading encounter data...</p> }
       { data && <EncounterDisplay data={data}/> }
-      {playerDisplays}
+      {/* {playerDisplays} */}
       <form onSubmit={handleAddPlayer}>
         <label>
           Add new player:

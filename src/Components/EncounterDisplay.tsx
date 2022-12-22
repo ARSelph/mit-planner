@@ -2,6 +2,9 @@ import React, { useEffect, useState, FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { useGetEncounterByNameQuery } from '../rtkapi';
 import { EncounterData } from '../../types';
+import BossAbilityMoment from './BossAbilityMoment';
+import PlayerAbilityMoment from './PlayerAbilityMoment';
+
 
 /* 
 Encounter window governs the boss, fight timeline, and abilities
@@ -29,23 +32,49 @@ Information needed from encounter:
 
 const EncounterDisplay: FC<{data: EncounterData}> = props => {
   const { data } = props;
+  const players = useAppSelector(state => state.player.players);
 
-  const abilityDisplays: JSX.Element[] = [];
+  const bossAbilityMoments: JSX.Element[] = [];
+  const playerAbilityMoments: JSX.Element[] = [];
+  // data.abilities.forEach(ability => {
+  //   abilityDisplays.push(
+  //     <div className='encounter-boss-ability'>
+  //       <p>Ability: {ability.name}</p>
+  //       <p>Type: {ability.type}</p>
+  //       <p>Description: {ability.description}</p>
+  //     </div>
+  //   )
+  // })
+
   data.abilities.forEach(ability => {
-    abilityDisplays.push(
-      <div className='encounter-boss-ability'>
-        <p>Ability: {ability.name}</p>
-        <p>Type: {ability.type}</p>
-        <p>Description: {ability.description}</p>
-      </div>
-    )
-  })
+    bossAbilityMoments.push(<td><BossAbilityMoment ability={ability}/></td>)
+  });
+
+  for (const player of players) {
+    const uses = player.abilityUses;
+    const playerRow: JSX.Element[] = [];
+    playerRow.push(<td>{player.job}</td>)
+    let p = 0;
+    for (const ability of data.abilities) {
+      if (uses[p] && uses[p].time === ability.time) {
+        playerRow.push(<td><PlayerAbilityMoment time={ability.time} ability={uses[p++]}/></td>)
+      } else {
+        playerRow.push(<td><PlayerAbilityMoment time={ability.time} ability={null}/></td>)
+      }
+    }
+    playerAbilityMoments.push(<tr>{playerRow}</tr>);
+  }
 
   return (
     <div className='encounter-boss-timeline'>
-      <h3>{data.bossName}</h3>
+      <table>
+        <tr>
+          <td><h3>{data.bossName}</h3></td>
+          {bossAbilityMoments}
+        </tr>
+        {playerAbilityMoments}
+      </table>
       {/* <p>Displaying data for {data.bossName}</p> */}
-      <>{abilityDisplays}</>
     </div>
   )
 }
