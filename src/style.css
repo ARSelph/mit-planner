@@ -16,3 +16,7 @@
   margin: 1.5em;
   min-width: 20em;
 }
+
+table, th, td {
+  border: 1px solid;
+}

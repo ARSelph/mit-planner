@@ -1,13 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Player } from '../types'
+import { Player, Job } from '../types'
 
 type encounterStateType = {encounterName: string | null};
 type playerStateType = {
-  players: Player[];
+  players: Player[]
 }
+type inactiveActionState = {
+  active: false,
+  time?: never,
+  job?: never,
+  playerInd?: never
+};
+type activeActionState = {
+  active: true,
+  time: number,
+  job: Job,
+  playerInd: number
+}
+type actionStateType = inactiveActionState | activeActionState;
 
 const initialEncounterState: encounterStateType = {encounterName: null};
-const initalPlayerState: playerStateType = {players: []}
+const initialPlayerState: playerStateType = {players: []};
+const initialActionState: actionStateType = {active: false}
 
 export const encounterSlice = createSlice({
   name: 'encounter',
@@ -22,7 +36,7 @@ export const encounterSlice = createSlice({
 
 export const playerSlice = createSlice({
   name: 'players',
-  initialState: initalPlayerState,
+  initialState: initialPlayerState,
   reducers: {
     addPlayer: (state: playerStateType, action: PayloadAction<string>) => {
       if (state.players.length < 8) {
@@ -34,6 +48,25 @@ export const playerSlice = createSlice({
     },
     deletePlayer: (state: playerStateType, action: PayloadAction<number>) => {
       state.players.splice(action.payload, 1);
+    }
+  }
+})
+
+export const actionSlice = createSlice({
+  name: 'actions',
+  initialState: initialActionState,
+  reducers: {
+    setInactive: (state: actionStateType) => {
+      state = {active: false};
+    },
+    setActive: (state: actionStateType, action: PayloadAction<{time: number, job: Job, playerInd: number}>) => {
+      const { time, job, playerInd } = action.payload;
+      state = {
+        active: true,
+        time,
+        job,
+        playerInd
+      }
     }
   }
 })
