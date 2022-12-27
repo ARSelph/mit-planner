@@ -30,7 +30,7 @@ export type Encounters = {
 
 export type Player = {
   job: string,
-  abilityUses: AbilityUse[]
+  abilityUses: {[key: number]: AbilityUse}
 }
 
 export type AbilityUse = {
@@ -143,4 +143,17 @@ export type Ability = {
       ability: string
     }[],
   }[]
+}
+
+export const testAbility: Ability = {
+  name: 'Test Ability',
+  type: 'spell',
+  level: 1,
+  iconPath: 'PLACEHOLDER',
+  recast: 10,
+  charges: 1,
+  range: null,
+  radius: null,
+  description: 'Test ability for use in debugging',
+  effects: []
 }

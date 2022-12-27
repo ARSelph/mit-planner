@@ -1,16 +1,28 @@
 import React, { useEffect, useState, FC } from 'react';
-import { AbilityUse, Player } from '../../types';
+import { AbilityUse, Player, testAbility } from '../../types';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { addAction } from '../reducers';
 
-const PlayerAbilityMoment:FC<{ability: AbilityUse | null, time: number, player: Player}> = (props) => {
-  const { ability, time, player } = props;
+const PlayerAbilityMoment:FC<{ability: AbilityUse | null, time: number, player: Player, playerInd: number}> = (props) => {
+  const { ability, time, player, playerInd } = props;
+  const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    alert(`Clicked on a cell for ${player.job} at ${time} seconds`);
+    // alert(`Clicked on a cell for ${player.job} at ${time} seconds`);
+    dispatch(addAction({
+      abilityUse: {
+        ability: testAbility,
+        time,
+        target: null
+      },
+      playerInd
+    }));
   }
 
   return (
     <div className='encounter-player-ability'>
-      <button onClick={handleClick}>Set Ability</button>
+      {ability === null && <button onClick={handleClick}>Set Ability</button>}
+      {ability && <p>Test ability is here</p>}
     </div>
   )
 }

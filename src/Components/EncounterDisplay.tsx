@@ -51,7 +51,8 @@ const EncounterDisplay: FC<{data: EncounterData}> = props => {
     bossAbilityMoments.push(<td><BossAbilityMoment ability={ability}/></td>)
   });
 
-  for (const player of players) {
+  for (let i = 0; i < players.length; i++) {
+    const player = players[i];
     const uses = player.abilityUses;
     const playerRow: JSX.Element[] = [];
     if (jobs) {
@@ -59,11 +60,7 @@ const EncounterDisplay: FC<{data: EncounterData}> = props => {
     }
     let p = 0;
     for (const ability of data.abilities) {
-      if (uses[p] && uses[p].time === ability.time) {
-        playerRow.push(<td><PlayerAbilityMoment player={player} time={ability.time} ability={uses[p++]}/></td>)
-      } else {
-        playerRow.push(<td><PlayerAbilityMoment player={player} time={ability.time} ability={null}/></td>)
-      }
+      playerRow.push(<td><PlayerAbilityMoment player={player} playerInd={i} time={ability.time} ability={player.abilityUses[ability.time] || null}/></td>)
     }
     playerAbilityMoments.push(<tr>{playerRow}</tr>);
   }

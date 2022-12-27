@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Player, Job } from '../types'
+import { Player, Job, Ability, AbilityUse } from '../types'
 
 type encounterStateType = {encounterName: string | null};
 type playerStateType = {
@@ -17,11 +17,11 @@ type activeActionState = {
   job: Job,
   playerInd: number
 }
-type actionStateType = inactiveActionState | activeActionState;
+type actionBarStateType = inactiveActionState | activeActionState;
 
 const initialEncounterState: encounterStateType = {encounterName: null};
 const initialPlayerState: playerStateType = {players: []};
-const initialActionState: actionStateType = {active: false}
+const initialActionBarState: actionBarStateType = {active: false}
 
 export const encounterSlice = createSlice({
   name: 'encounter',
@@ -42,24 +42,28 @@ export const playerSlice = createSlice({
       if (state.players.length < 8) {
         state.players.push({
           job: action.payload,
-          abilityUses: []
+          abilityUses: {}
         });
       }
     },
     deletePlayer: (state: playerStateType, action: PayloadAction<number>) => {
       state.players.splice(action.payload, 1);
+    },
+    addAction: (state: playerStateType, action: PayloadAction<{abilityUse: AbilityUse, playerInd: number}>) => {
+      const { abilityUse, playerInd } = action.payload;
+      state.players[playerInd].abilityUses[abilityUse.time] = abilityUse;
     }
   }
 })
 
-export const actionSlice = createSlice({
+export const actionBarSlice = createSlice({
   name: 'actions',
-  initialState: initialActionState,
+  initialState: initialActionBarState,
   reducers: {
-    setInactive: (state: actionStateType) => {
+    setInactive: (state: actionBarStateType) => {
       state = {active: false};
     },
-    setActive: (state: actionStateType, action: PayloadAction<{time: number, job: Job, playerInd: number}>) => {
+    setActive: (state: actionBarStateType, action: PayloadAction<{time: number, job: Job, playerInd: number}>) => {
       const { time, job, playerInd } = action.payload;
       state = {
         active: true,
@@ -76,8 +80,13 @@ export const {
 } = encounterSlice.actions;
 
 export const {
-  addPlayer, deletePlayer
+  addPlayer, deletePlayer, addAction
 } = playerSlice.actions;
+
+export const {
+  setInactive, setActive
+} = actionBarSlice.actions
 
 export const encounterReducer = encounterSlice.reducer;
 export const playerReducer = playerSlice.reducer;
+export const actionBarReducer = actionBarSlice.reducer;
