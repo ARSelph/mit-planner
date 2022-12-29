@@ -1,27 +1,38 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { JobString } from "../server/jobData/allJobs";
 import { Player, Job, Ability, AbilityUse } from '../types'
 
 type encounterStateType = {encounterName: string | null};
 type playerStateType = {
   players: Player[]
 }
-type inactiveActionState = {
-  active: false,
-  time?: never,
-  job?: never,
-  playerInd?: never
-};
-type activeActionState = {
-  active: true,
-  time: number,
-  job: Job,
-  playerInd: number
+// type inactiveActionState = {
+//   active: false,
+//   time?: never,
+//   job?: never,
+//   playerInd?: never
+// };
+// type activeActionState = {
+//   active: true,
+//   time: number,
+//   job: Job,
+//   playerInd: number
+// }
+type actionBarStateType = {
+  active: boolean,
+  time: number | null,
+  job: Job | null,
+  playerInd: number | null
 }
-type actionBarStateType = inactiveActionState | activeActionState;
 
 const initialEncounterState: encounterStateType = {encounterName: null};
 const initialPlayerState: playerStateType = {players: []};
-const initialActionBarState: actionBarStateType = {active: false}
+const initialActionBarState: actionBarStateType = {
+  active: false,
+  time: null,
+  job: null,
+  playerInd: null
+}
 
 export const encounterSlice = createSlice({
   name: 'encounter',
@@ -38,7 +49,7 @@ export const playerSlice = createSlice({
   name: 'players',
   initialState: initialPlayerState,
   reducers: {
-    addPlayer: (state: playerStateType, action: PayloadAction<string>) => {
+    addPlayer: (state: playerStateType, action: PayloadAction<Job>) => {
       if (state.players.length < 8) {
         state.players.push({
           job: action.payload,
@@ -57,15 +68,21 @@ export const playerSlice = createSlice({
 })
 
 export const actionBarSlice = createSlice({
-  name: 'actions',
+  name: 'actionBar',
   initialState: initialActionBarState,
   reducers: {
     setInactive: (state: actionBarStateType) => {
-      state = {active: false};
+      return state = {
+        active: false,
+        time: null,
+        job: null,
+        playerInd: null
+      };
     },
     setActive: (state: actionBarStateType, action: PayloadAction<{time: number, job: Job, playerInd: number}>) => {
+      console.log('setting action bar to active');
       const { time, job, playerInd } = action.payload;
-      state = {
+      return state = {
         active: true,
         time,
         job,

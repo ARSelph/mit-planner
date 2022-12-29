@@ -56,7 +56,7 @@ const EncounterDisplay: FC<{data: EncounterData}> = props => {
     const uses = player.abilityUses;
     const playerRow: JSX.Element[] = [];
     if (jobs) {
-      playerRow.push(<td>{jobs[player.job].fullName}</td>);
+      playerRow.push(<td>{player.job.fullName}</td>);
     }
     let p = 0;
     for (const ability of data.abilities) {

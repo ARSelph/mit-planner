@@ -15,11 +15,14 @@ export const jobApi = createApi({
   reducerPath: 'jobApi',
   baseQuery: fetchBaseQuery({ baseUrl: '/api/job' }),
   endpoints: (builder) => ({
-    getJobByName: builder.query<Job, string>({
-      query: (name) => `?job=${name}`
+    getJobByName: builder.query<Job | null, string>({
+      query: (name) => {
+        if (name.length) return `?job=${name}`;
+        else return '';
+      }
     }),
     getAllJobs: builder.query<{[key:string]: {fullName: string, iconPath: string}}, void>({
-      query: () => ''
+      query: () => '?job=all'
     })
   })
 })

@@ -15,6 +15,7 @@ const EncounterWindow: FC = () => {
   const [selectedJob, setSelectedJob] = useState('');
   const { data, error, isLoading, isUninitialized } = useGetEncounterByNameQuery(encounter, { skip });
   const jobs = useGetAllJobsQuery().data;
+  const activeJob = useGetJobByNameQuery(selectedJob).data;
 
   useEffect(() => {
     setSkip(encounter ? false : true);
@@ -49,7 +50,9 @@ const EncounterWindow: FC = () => {
   }
 
   const handleAddPlayer = (event: any) => {
-    if (selectedJob.length) dispatch(addPlayer(selectedJob));
+    if (activeJob){
+      dispatch(addPlayer(activeJob));
+    }
     event.preventDefault();
   }
   const handleChange = (event: any) => {
@@ -65,7 +68,7 @@ const EncounterWindow: FC = () => {
       { isLoading && <p>Loading encounter data...</p> }
       { data && <EncounterDisplay data={data}/> }
       {/* {playerDisplays} */}
-      <form onSubmit={handleAddPlayer}>
+      {data && <form onSubmit={handleAddPlayer}>
         <label>
           Add new player:
           <select value={selectedJob} onChange={handleChange}>
@@ -73,7 +76,7 @@ const EncounterWindow: FC = () => {
           </select>
         </label>
         <input type='submit' value='Add' />
-      </form>
+      </form>}
     </div>
   )
 }

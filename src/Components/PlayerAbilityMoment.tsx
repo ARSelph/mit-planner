@@ -1,7 +1,7 @@
 import React, { useEffect, useState, FC } from 'react';
 import { AbilityUse, Player, testAbility } from '../../types';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { addAction } from '../reducers';
+import { addAction, setActive } from '../reducers';
 
 const PlayerAbilityMoment:FC<{ability: AbilityUse | null, time: number, player: Player, playerInd: number}> = (props) => {
   const { ability, time, player, playerInd } = props;
@@ -17,6 +17,11 @@ const PlayerAbilityMoment:FC<{ability: AbilityUse | null, time: number, player: 
       },
       playerInd
     }));
+    dispatch(setActive({
+      time,
+      job: player.job,
+      playerInd
+    }))
   }
 
   return (

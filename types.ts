@@ -29,7 +29,7 @@ export type Encounters = {
 }
 
 export type Player = {
-  job: string,
+  job: Job,
   abilityUses: {[key: number]: AbilityUse}
 }
 

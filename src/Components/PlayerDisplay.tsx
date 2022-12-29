@@ -4,13 +4,11 @@ import { useGetJobByNameQuery } from '../rtkapi';
 
 const PlayerDisplay: FC<{player: Player}> = props => {
   const { player } = props;
-  const { data, error, isLoading, isUninitialized } = useGetJobByNameQuery(player.job);
-  
-  
+
   return (
     <div>
-      {data && <img src={`/public/jobIcons/${data.iconPath}`}/>}
-      {data && <h5>{data.fullName}</h5>}
+      <img src={`/public/jobIcons/${player.job.iconPath}`}/>
+      <h5>{player.job.fullName}</h5>
     </div>
   )
 }

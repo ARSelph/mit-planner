@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express-serve-static-core';
 import encounters from './encounterData/encounterdata'
 import { ErrObject } from '../types'
-import allJobs from './jobData/allJobs'
+import allJobs, { JobString } from './jobData/allJobs'
 
 type Controllers = {
   getEncounter: RequestHandler,
@@ -32,15 +32,18 @@ const controllers: Controllers = {
     if (typeof job === 'string' && job in allJobs) {
       res.locals.data = allJobs[job as keyof typeof allJobs];
       return next();
-    } else if (typeof job === 'undefined') {
+    } else if (job === 'all') {
       const jobNameAndIconPath: {[key: string]: {fullName: string, iconPath: string}} = {};
       for (const job in allJobs) {
         jobNameAndIconPath[job] = {
-          fullName: allJobs[job as keyof typeof allJobs].fullName,
-          iconPath: allJobs[job as keyof typeof allJobs].iconPath,
+          fullName: allJobs[job as JobString].fullName,
+          iconPath: allJobs[job as JobString].iconPath,
         }
       }
       res.locals.data = jobNameAndIconPath
+      return next();
+    } else if (typeof job === 'undefined') {
+      res.locals.data = null;
       return next();
     } else {
       const err: ErrObject = {
