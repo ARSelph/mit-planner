@@ -62,7 +62,10 @@ export const playerSlice = createSlice({
     },
     addAction: (state: playerStateType, action: PayloadAction<{abilityUse: AbilityUse, playerInd: number}>) => {
       const { abilityUse, playerInd } = action.payload;
-      state.players[playerInd].abilityUses[abilityUse.time] = abilityUse;
+      if (!state.players[playerInd].abilityUses[abilityUse.time]) {
+        state.players[playerInd].abilityUses[abilityUse.time] = [];
+      }
+      state.players[playerInd].abilityUses[abilityUse.time].push(abilityUse)
     }
   }
 })

@@ -1,6 +1,7 @@
 import React from 'react';
 import EncounterWindow from './Components/EncounterWindow';
 import EncounterSelector from './Components/EncounterSelector';
+import ActionBar from './Components/ActionBar';
 import { useAppSelector } from './hooks';
 
 const App = () => {
@@ -12,7 +13,7 @@ const App = () => {
       <h1>Mit Planner</h1>
       <EncounterSelector />
       <EncounterWindow />
-      {actionBarState.active && <p>Action Bar is Active</p> }
+      {actionBarState.active && <ActionBar /> }
     </div>
   )
 };

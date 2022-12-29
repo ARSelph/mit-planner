@@ -30,7 +30,7 @@ export type Encounters = {
 
 export type Player = {
   job: Job,
-  abilityUses: {[key: number]: AbilityUse}
+  abilityUses: {[key: number]: AbilityUse[]}
 }
 
 export type AbilityUse = {

@@ -60,7 +60,7 @@ const EncounterDisplay: FC<{data: EncounterData}> = props => {
     }
     let p = 0;
     for (const ability of data.abilities) {
-      playerRow.push(<td><PlayerAbilityMoment player={player} playerInd={i} time={ability.time} ability={player.abilityUses[ability.time] || null}/></td>)
+      playerRow.push(<td><PlayerAbilityMoment player={player} playerInd={i} time={ability.time} abilities={player.abilityUses[ability.time] || null}/></td>)
     }
     playerAbilityMoments.push(<tr>{playerRow}</tr>);
   }
