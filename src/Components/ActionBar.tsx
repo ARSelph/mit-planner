@@ -27,6 +27,7 @@ const ActionBar: FC = () => {
       <div className='action-bar-item'>
         <img src={`public/abilityIcons/${ability.iconPath}`}/>
         <h4>{ability.name}</h4>
+        <p>Recast: {ability.recast}</p>
         <p>{ability.description}</p>
         <button onClick={() => handleClick(ability)}>Add</button>
       </div>

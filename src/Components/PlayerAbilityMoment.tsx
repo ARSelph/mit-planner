@@ -16,11 +16,12 @@ const PlayerAbilityMoment:FC<{abilities: AbilityUse[] | null, time: number, play
     }))
   }
   
-  const handleDelete = (i: number) => {
+  const handleDelete = (i: number, name: string) => {
     dispatch(deleteAction({
       time,
       playerInd,
-      abilityInd: i
+      abilityInd: i,
+      name
     }))
   }
 
@@ -31,7 +32,7 @@ const PlayerAbilityMoment:FC<{abilities: AbilityUse[] | null, time: number, play
         <div className='action-use'>
           <img src={`public/abilityIcons/${ability.ability.iconPath}`}/>
           <p>{ability.ability.name}</p>
-          <button onClick={() => handleDelete(i)}>X</button>
+          <button onClick={() => handleDelete(i, ability.ability.name)}>X</button>
         </div>);
     })
   }

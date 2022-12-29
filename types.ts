@@ -33,6 +33,9 @@ export type Player = {
   abilityUses: {
     [key: number]: AbilityUse[]
   }
+  cooldowns: {
+    [key: string]: number[]
+  }
 }
 
 export type AbilityUse = {
