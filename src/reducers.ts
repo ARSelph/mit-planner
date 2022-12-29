@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 import { JobString } from "../server/jobData/allJobs";
 import { Player, Job, Ability, AbilityUse } from '../types'
 
@@ -65,7 +65,14 @@ export const playerSlice = createSlice({
       if (!state.players[playerInd].abilityUses[abilityUse.time]) {
         state.players[playerInd].abilityUses[abilityUse.time] = [];
       }
+      for (const ability of state.players[playerInd].abilityUses[abilityUse.time]) {
+        if (current(ability.ability) === abilityUse.ability) return;
+      }
       state.players[playerInd].abilityUses[abilityUse.time].push(abilityUse)
+    },
+    deleteAction: (state: playerStateType, action: PayloadAction<{time: number, playerInd: number, abilityInd: number}>) => {
+      const { time, playerInd, abilityInd } = action.payload;
+      state.players[playerInd].abilityUses[time].splice(abilityInd, 1);
     }
   }
 })
@@ -100,7 +107,7 @@ export const {
 } = encounterSlice.actions;
 
 export const {
-  addPlayer, deletePlayer, addAction
+  addPlayer, deletePlayer, addAction, deleteAction
 } = playerSlice.actions;
 
 export const {

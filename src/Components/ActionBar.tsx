@@ -24,15 +24,17 @@ const ActionBar: FC = () => {
   const actionOptions: JSX.Element[] = [];
   for (const ability of Object.values(job.abilities)) {
     actionOptions.push(
-      <div>
-        <p>{ability.name}</p>
+      <div className='action-bar-item'>
+        <img src={`public/abilityIcons/${ability.iconPath}`}/>
+        <h4>{ability.name}</h4>
+        <p>{ability.description}</p>
         <button onClick={() => handleClick(ability)}>Add</button>
       </div>
     )
   }
 
   return(
-    <div>{actionOptions}</div>
+    <div className='action-bar'>{actionOptions}</div>
   )
 }
 

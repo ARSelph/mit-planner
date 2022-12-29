@@ -20,3 +20,32 @@
 table, th, td {
   border: 1px solid;
 }
+
+.action-bar {
+  display: flex;
+  overflow: scroll;
+  border: 1px solid red;
+  margin: 1em;
+  padding: 1em;
+  min-width: 80em;
+}
+
+.action-bar-item {
+  margin: 20px;
+  min-width: 20em;
+}
+
+.action-use {
+  display: flex;
+  align-items: center;
+}
+
+.action-use button {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.action-use img {
+  width: 3em;
+  height: 3em;
+}

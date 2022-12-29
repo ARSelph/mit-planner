@@ -1,7 +1,7 @@
 import React, { useEffect, useState, FC } from 'react';
 import { AbilityUse, Player, testAbility } from '../../types';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { addAction, setActive } from '../reducers';
+import { addAction, setActive, deleteAction } from '../reducers';
 
 const PlayerAbilityMoment:FC<{abilities: AbilityUse[] | null, time: number, player: Player, playerInd: number}> = (props) => {
   const { abilities, time, player, playerInd } = props;
@@ -9,24 +9,30 @@ const PlayerAbilityMoment:FC<{abilities: AbilityUse[] | null, time: number, play
 
   const handleClick = () => {
     // alert(`Clicked on a cell for ${player.job} at ${time} seconds`);
-    // dispatch(addAction({
-    //   abilityUse: {
-    //     ability: testAbility,
-    //     time,
-    //     target: null
-    //   },
-    //   playerInd
-    // }));
     dispatch(setActive({
       time,
       job: player.job,
       playerInd
     }))
   }
+  
+  const handleDelete = (i: number) => {
+    dispatch(deleteAction({
+      time,
+      playerInd,
+      abilityInd: i
+    }))
+  }
+
   const abilityNames: JSX.Element[] = [];
   if (abilities) {
-    abilities.forEach(ability => {
-      abilityNames.push(<p>{ability.ability.name}</p>);
+    abilities.forEach((ability, i) => {
+      abilityNames.push(
+        <div className='action-use'>
+          <img src={`public/abilityIcons/${ability.ability.iconPath}`}/>
+          <p>{ability.ability.name}</p>
+          <button onClick={() => handleDelete(i)}>X</button>
+        </div>);
     })
   }
 
