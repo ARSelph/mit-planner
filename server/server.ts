@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import router from './router';
 import { ErrObject } from '../types';
+import { node } from 'webpack';
 
 const app = express();
 
@@ -15,7 +16,11 @@ app.use('/public', express.static(path.join(__dirname, '../public')));
 app.use('/api', router);
 
 app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
+  console.log('fetching home page');
+  if (process.env.NODE_ENV === 'development') {
+    return res.status(200).sendFile(path.join(__dirname, '../src/index.html'));
+  }
+  return res.status(200).sendFile(path.join(__dirname, '../dist/index.html'));
 })
 
 app.use('*', (req: Request, res: Response) =>
