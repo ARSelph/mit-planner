@@ -7,7 +7,7 @@ const brdAbilities: {[key: string]: Ability} = {
     name: 'Troubador',
     level: 62,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'troubador.png',
     recast: 90,
     charges: 1,
     range: null,
@@ -33,6 +33,28 @@ const brdAbilities: {[key: string]: Ability} = {
             ability: 'Shield Samba'
           }
         ]
+      }
+    ]
+  },
+  'Nature\'s Minne': {
+    name: 'Nature\'s Minne',
+    level: 66,
+    type: 'ability',
+    iconPath: 'nature\'s_minne.png',
+    recast: 90,
+    charges: 1,
+    range: 30,
+    radius: null,
+    description: `Increases HP recovery via healing actions for a party member or self by 20%.
+    Duration: 15s`,
+    effects: [
+      {
+        target: 'single',
+        includesSelf: true,
+        hpRecoveryIncrease: {
+          amount: 0.2,
+          duration: 15
+        }
       }
     ]
   }

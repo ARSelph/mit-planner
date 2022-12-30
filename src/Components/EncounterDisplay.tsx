@@ -4,6 +4,7 @@ import { useGetEncounterByNameQuery, useGetAllJobsQuery } from '../rtkapi';
 import { EncounterData } from '../../types';
 import BossAbilityMoment from './BossAbilityMoment';
 import PlayerAbilityMoment from './PlayerAbilityMoment';
+import MitTotal from './MitTotal';
 
 
 /* 
@@ -65,6 +66,11 @@ const EncounterDisplay: FC<{data: EncounterData}> = props => {
     playerAbilityMoments.push(<tr>{playerRow}</tr>);
   }
 
+  const totals: JSX.Element[] = [];
+  for (const ability of data.abilities) {
+    totals.push(<MitTotal time={ability.time}/>);
+  }
+
   return (
     <div className='encounter-boss-timeline'>
       <table>
@@ -74,6 +80,10 @@ const EncounterDisplay: FC<{data: EncounterData}> = props => {
             {bossAbilityMoments}
           </tr>
           {playerAbilityMoments}
+          <tr>
+            <td>Total Mitigation</td>
+            {totals}
+          </tr>
         </tbody>
       </table>
       {/* <p>Displaying data for {data.bossName}</p> */}

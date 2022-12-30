@@ -25,16 +25,16 @@ const EncounterWindow: FC = () => {
     dispatch(deletePlayer(index));
   }
 
-  const playerDisplays: JSX.Element[] = [];
+  // const playerDisplays: JSX.Element[] = [];
 
-  players.forEach((player, index) => {
-    playerDisplays.push(
-      <span>
-        <PlayerDisplay player={player}/>
-        <button onClick={()=>handleDelete(index)}>Delete</button>
-      </span>
-    )
-  })
+  // players.forEach((player, index) => {
+  //   playerDisplays.push(
+  //     <span>
+  //       <PlayerDisplay player={player}/>
+  //       <button onClick={()=>handleDelete(index)}>Delete</button>
+  //     </span>
+  //   )
+  // })
 
   const jobOptions: JSX.Element[] = [];
 
