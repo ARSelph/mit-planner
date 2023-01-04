@@ -6,7 +6,7 @@ const casterAbilities: {[key: string]: Ability} = {
     name: 'Addle',
     level: 8,
     type: 'ability',
-    iconPath: '',
+    iconPath: 'addle.png',
     recast: 90,
     charges: 1,
     range: 25,

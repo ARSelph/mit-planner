@@ -1,5 +1,6 @@
 import React, { useEffect, useState, FC } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks';
+import { deletePlayer, setActive, setInactive } from '../reducers';
 import { useGetEncounterByNameQuery, useGetAllJobsQuery } from '../rtkapi';
 import { EncounterData } from '../../types';
 import BossAbilityMoment from './BossAbilityMoment';
@@ -34,6 +35,8 @@ Information needed from encounter:
 const EncounterDisplay: FC<{data: EncounterData}> = props => {
   const { data } = props;
   const players = useAppSelector(state => state.player.players);
+  const actionBar = useAppSelector(state => state.actionBar);
+  const dispatch = useAppDispatch();
   const jobs = useGetAllJobsQuery().data;
 
   const bossAbilityMoments: JSX.Element[] = [];
@@ -48,20 +51,41 @@ const EncounterDisplay: FC<{data: EncounterData}> = props => {
   //   )
   // })
 
+  const handlePlayerDelete = (i: number): void => {
+    if (actionBar.active) {
+      const { time, job, playerInd } = actionBar;
+      if (actionBar.playerInd === i) {
+        dispatch(setInactive());
+      } else if (time && job && playerInd && playerInd > i) {
+        dispatch(setActive(
+          {
+            time,
+            job,
+            playerInd: playerInd - 1
+          }));
+      }
+    }
+    dispatch(deletePlayer(i));
+  }
+
   data.abilities.forEach(ability => {
     bossAbilityMoments.push(<td><BossAbilityMoment ability={ability}/></td>)
   });
 
   for (let i = 0; i < players.length; i++) {
     const player = players[i];
-    const uses = player.abilityUses;
+    // const uses = player.abilityUses;
     const playerRow: JSX.Element[] = [];
-    if (jobs) {
-      playerRow.push(<td>{player.job.fullName}</td>);
-    }
-    let p = 0;
+    playerRow.push(
+      <td>
+        {player.job.fullName}
+        <button onClick={() => handlePlayerDelete(i)}>X</button>
+      </td>
+    );
     for (const ability of data.abilities) {
-      playerRow.push(<td><PlayerAbilityMoment player={player} playerInd={i} time={ability.time} abilities={player.abilityUses[ability.time] || null}/></td>)
+      const activeCell = actionBar.playerInd === i && actionBar.time === ability.time
+      // if (activeCell) console.log(`active cell on ${player.job.name} at ${ability.time}`);
+      playerRow.push(<td className={activeCell ? 'active-action' : 'action'}><PlayerAbilityMoment player={player} playerInd={i} time={ability.time} abilities={player.abilityUses[ability.time] || null}/></td>)
     }
     playerAbilityMoments.push(<tr>{playerRow}</tr>);
   }

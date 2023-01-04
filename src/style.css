@@ -49,3 +49,7 @@ table, th, td {
   width: 3em;
   height: 3em;
 }
+
+.active-action {
+  background-color: aquamarine;
+}
