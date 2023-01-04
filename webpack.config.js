@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -34,7 +35,7 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    // publicPath: '/dist/',
+    publicPath: '/dist',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
@@ -42,6 +43,12 @@ module.exports = {
       template: "./src/index.html",
       filename: './index.html'
     }),
+    new CopyWebpackPlugin({patterns: [
+      {
+        from: 'public',
+        to: 'public'
+      }
+    ]})
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
