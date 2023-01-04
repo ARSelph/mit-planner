@@ -63,19 +63,21 @@ export const playerSlice = createSlice({
     },
     addAction: (state: playerStateType, action: PayloadAction<{abilityUse: AbilityUse, playerInd: number}>) => {
       const { abilityUse, playerInd } = action.payload;
-      let newCds: number[];
-      if (state.players[playerInd].cooldowns[abilityUse.ability.name]) {
-        const testCds = [...state.players[playerInd].cooldowns[abilityUse.ability.name]];
-        testCds.push(abilityUse.time);
-        testCds.sort((a, b) => a - b);
-        for (let i = 0; i < testCds.length - 1; i++) {
-          if (testCds[i + 1] - testCds[i] < abilityUse.ability.recast) {
-            alert('action rejected due to cooldown');
-            return;
-          }
-        }
-        newCds = testCds;
-      } else newCds = [abilityUse.time];
+      // commented out code here will prevent ability use when on cooldown
+      // I disabled it because it does not yet account for charges
+      // let newCds: number[];
+      // if (state.players[playerInd].cooldowns[abilityUse.ability.name]) {
+      //   const testCds = [...state.players[playerInd].cooldowns[abilityUse.ability.name]];
+      //   testCds.push(abilityUse.time);
+      //   testCds.sort((a, b) => a - b);
+      //   for (let i = 0; i < testCds.length - 1; i++) {
+      //     if (testCds[i + 1] - testCds[i] < abilityUse.ability.recast) {
+      //       alert('action rejected due to cooldown');
+      //       return;
+      //     }
+      //   }
+      //   newCds = testCds;
+      // } else newCds = [abilityUse.time];
       if (!state.players[playerInd].abilityUses[abilityUse.time]) {
         state.players[playerInd].abilityUses[abilityUse.time] = [];
       }
@@ -84,17 +86,17 @@ export const playerSlice = createSlice({
       }
       state.players[playerInd].abilityUses[abilityUse.time].push(abilityUse)
       // optimize this later
-      if (!state.players[playerInd].cooldowns[abilityUse.ability.name]) {
-        state.players[playerInd].cooldowns[abilityUse.ability.name] = [];
-      }
-      state.players[playerInd].cooldowns[abilityUse.ability.name] = newCds;
+      // if (!state.players[playerInd].cooldowns[abilityUse.ability.name]) {
+      //   state.players[playerInd].cooldowns[abilityUse.ability.name] = [];
+      // }
+      // state.players[playerInd].cooldowns[abilityUse.ability.name] = newCds;
       // state.players[playerInd].cooldowns[abilityUse.ability.name].push(abilityUse.time);
       // state.players[playerInd].cooldowns[abilityUse.ability.name].sort((a, b) => a - b);
     },
     deleteAction: (state: playerStateType, action: PayloadAction<{time: number, playerInd: number, abilityInd: number, name: string}>) => {
       const { time, playerInd, abilityInd, name } = action.payload;
       state.players[playerInd].abilityUses[time].splice(abilityInd, 1);
-      state.players[playerInd].cooldowns[name].splice(state.players[playerInd].cooldowns[name].indexOf(time), 1);
+      // state.players[playerInd].cooldowns[name].splice(state.players[playerInd].cooldowns[name].indexOf(time), 1);
     }
   }
 })
