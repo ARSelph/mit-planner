@@ -6,6 +6,7 @@ import { ErrObject } from '../types';
 import { node } from 'webpack';
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -38,6 +39,6 @@ app.use((err: ErrObject, req: Request, res: Response) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(3000, () => {
-  console.log('app listening on port 3000');
-})
+app.listen(PORT, () => {
+  console.log(`app listening on port ${PORT}`);
+});
