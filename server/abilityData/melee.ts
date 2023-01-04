@@ -72,4 +72,8 @@ const meleeAbilities: {[key: string]: Ability} = {
   },
 };
 
+for (const ability in meleeAbilities) {
+  meleeAbilities[ability].iconPath = basePath + meleeAbilities[ability].iconPath;
+}
+
 export default meleeAbilities;

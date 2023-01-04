@@ -30,4 +30,8 @@ const casterAbilities: {[key: string]: Ability} = {
   },
 };
 
+for (const ability in casterAbilities) {
+  casterAbilities[ability].iconPath = basePath + casterAbilities[ability].iconPath;
+}
+
 export default casterAbilities;

@@ -5,4 +5,8 @@ const healerAbilities: {[key: string]: Ability} = {
   
 };
 
+for (const ability in healerAbilities) {
+  healerAbilities[ability].iconPath = basePath + healerAbilities[ability].iconPath;
+}
+
 export default healerAbilities;

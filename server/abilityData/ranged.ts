@@ -25,4 +25,8 @@ const rangedAbilities: {[key: string]: Ability} = {
   },
 };
 
+for (const ability in rangedAbilities) {
+  rangedAbilities[ability].iconPath = basePath + rangedAbilities[ability].iconPath;
+}
+
 export default rangedAbilities;
