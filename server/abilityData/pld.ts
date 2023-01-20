@@ -12,15 +12,16 @@ const pldAbilities: {[key: string]: Ability} = {
     charges: 1,
     range: null,
     radius: null,
-    description: `Block incoming attacks.
+    description: `Reduces damage taken by 15%.
     Duration: 6s
     Oath Gauge Cost: 50`,
     effects: [
       {
         target: 'self',
         includesSelf: true,
-        block: {
-          duration: 6
+        damageReduction: {
+          duration: 6,
+          amount: 0.15
         }
       }
     ]
@@ -91,6 +92,27 @@ const pldAbilities: {[key: string]: Ability} = {
       }
     ]
   },
+  'Bulwark': {
+    name: 'Bulwark',
+    level: 52,
+    type: 'ability',
+    iconPath: 'bulwark.png',
+    recast: 90,
+    charges: 1,
+    range: null,
+    radius: null,
+    description: `Block incoming attacks.
+    Duration: 10s`,
+    effects: [
+      {
+        target: 'self',
+        includesSelf: true,
+        block: {
+          duration: 10
+        }
+      }
+    ]
+  },
   'Divine Veil': {
     name: 'Divine Veil',
     level: 56,
@@ -100,17 +122,14 @@ const pldAbilities: {[key: string]: Ability} = {
     charges: 1,
     range: null,
     radius: null,
-    description: `Upon HP recovery via healing magic cast by self or a party member, a protective barrier is cast on all party members within a radius of 15 yalms.
+    description: `Creates a barrier around self and all party members near you that absorbs damage equivalent to 10% of your maximum HP.
     Duration: 30s
-    Barrier Effect: Prevents damage up to 10% of your maximum HP
-    Duration: 30s
-    Additional Effect: Restore target's HP
-    Cure Potency: 400
-    Effect ends upon casting barrier on self and nearby party members.`,
+    Additional Effect: Restores target's HP
+    Cure Potency: 400`,
     effects: [
       {
         target: 'aoe',
-        includesSelf: false,
+        includesSelf: true,
         barrier: {
           maxHpFraction: 0.1,
           duration: 30
@@ -250,7 +269,7 @@ const pldAbilities: {[key: string]: Ability} = {
     charges: 1,
     range: null,
     radius: null,
-    description: `Block incoming attacks.
+    description: `Reduces damage taken by 15%.
     Duration: 8s
     Additional Effect: Grants Knight's Resolve
     Knight's Resolve Effect: Reduces damage taken by 15%
@@ -264,7 +283,8 @@ const pldAbilities: {[key: string]: Ability} = {
       {
         target: 'self',
         includesSelf: true,
-        block: {
+        damageReduction: {
+          amount: 0.15,
           duration: 8
         }
       },
